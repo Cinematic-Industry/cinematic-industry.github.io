@@ -33,6 +33,17 @@ body{
     line-height: 1.6;
 }
 
+      .bg-video {
+  position: fixed;         /* Make video stick to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;       /* Cover the screen without stretching */
+  z-index: -1;             /* Push behind other content */
+  pointer-events: none;    /* Let users interact with page elements */
+}
+
 button, .btn{
     cursor: pointer;
     border: none;
@@ -390,6 +401,11 @@ h1, h2, h3{
   </style>
 </head>
 <body>
+    <!-- Background video -->
+  <video autoplay muted loop class="bg-video">
+    <source src="video.mp4" type="video/mp4">
+    
+  </video>
     
     <!-- header -->
     <header id = "header" class = "vh-100 flex">

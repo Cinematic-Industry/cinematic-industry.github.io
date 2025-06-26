@@ -1,336 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I'm a Photographer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm a Photographer</title>
+    <!-- font awesome -->
+    <!-- Add this inside the <head> tag -->
+  
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel = "stylesheet" href = "css/style.css">
   <style>
-    :root {
-      --transition: all 300ms ease-in-out;
-      --dark-color: #332e29;
-      --light-color: #fff;
-    }
-    * {
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-    }
-    html {
-      font-size: 10px;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-size: 1.6rem;
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-    }
-    .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-      pointer-events: none;
-    }
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 2rem;
-    }
-    .vh-100 {
-      min-height: 100vh;
-    }
-    .flex {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .grid {
-      display: grid;
-      gap: 1rem;
-    }
-    .py-7 {
-      padding: 7rem 0;
-    }
+
+:root{
+    --transition: all 300ms ease-in-out;
+    --dark-color: #332e29;
+    --light-color: #fff;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+html{
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+body{
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+button, .btn{
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: var(--dark-color);
+}
+img{
+    width: 100%;
+    display: block;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.vh-100{
+    min-height: 100vh;
+}
+h1, h2, h3{
+    margin-top: 0;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    color: var(--dark-color);
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.py-7{
+    padding: 7rem 0;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+.lead{
+    padding: 1rem 0;
+    font-size: 1.7rem;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* header */
+#header{
+       justify-content: flex-start;
+    align-items: flex-end;
+}
+#header .container{
+    width: 100%;
+}
+.header-content{
+    padding-bottom: 4rem;
+}
+.header-content h1{
+    font-size: 4.5rem;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    color: var(--light-color);
+}
+.header-content h3{
+    color: var(--light-color);
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+}
+.social-links{
+    display: flex;
+    margin-top: 3.5rem;
+}
+.social-links li a{
+    width: 40px;
+    height: 40px;
+    background-color: var(--light-color);
+    margin-right: 1rem;
+    border-radius: .3rem;
+    box-shadow: 0 0 6px 5px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+.social-links li a:hover{
+    opacity: 0.9;
+}
+
+/* about */
     .about {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.4);     
       color: white;
       padding: 2rem;
       border-radius: 10px;
     }
-    .about-left {
-      height: 480px;
-      overflow: hidden;
-    }
-    .lead {
-      font-size: 1.7rem;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-    h1, h2, h3 {
-      color: var(--light-color);
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-    }
-    .header-content h1 {
-      font-size: 4.5rem;
-    }
-    .header-content h3 {
-      font-weight: 300;
-      letter-spacing: 4px;
-    }
-    .title h2 {
-      position: relative;
-      letter-spacing: 3px;
-      font-weight: 600;
-    }
-    .title h2::after {
-      content: "";
-      position: absolute;
-      top: 120%;
-      left: 0;
-      width: 70px;
-      height: 4px;
-      background-color: var(--light-color);
-    }
-    .btn-down {
-      font-size: 3rem;
-      color: white;
-      display: inline-block;
-      margin-top: 1rem;
-      transition: var(--transition);
-    }
-    .btn-down:hover {
-      transform: translateY(5px);
-    }
-    .social-links {
-      display: flex;
-      margin-top: 3.5rem;
-    }
-    .social-links li a {
-      width: 40px;
-      height: 40px;
-      background: white;
-      margin-right: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.3rem;
-      box-shadow: 0 0 6px 5px rgba(0, 0, 0, 0.2);
-    }
-    #work, #insta {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('') center/cover no-repeat fixed;
-      color: var(--light-color);
-    }
-    .portfolio-grid, .insta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .portfolio-grid > div, .insta-grid > div {
-      height: 250px;
-      overflow: hidden;
-    }
-    .portfolio-grid img, .insta-grid img, .work-bottom img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .footer-content {
-      text-align: center;
-      color: var(--light-color);
-      background: var(--dark-color);
-      padding: 5rem 2rem;
-    }
-    .footer-content img {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      margin-top: 2rem;
-    }
-  </style>
-</head>
-<body>
+    .about-left{
+    margin-bottom: 4rem;
+    height: 480px;
+    overflow: hidden;   
+   
+}
+/* button down and title -reusable */
+.btn-down{
+    font-size: 3rem;f
+    display: inline-block;
+    margin-top: 1rem;
+    color:white;
+    
+}
+.btn-down:hover{
+    transform: translateY(5px);
+}
+.btn-down-white{
+    color: var(--light-color);
+}
+.title{
+    margin-bottom: 5rem;
+}
+.title h2{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    position: relative;
+    color:white;
+}
+.title h2::after{
+    position: absolute;
+    content: "";
+    top: 120%;
+    left: 0;
+    width: 70px;
+    height: 4px;
+    background-color: var(--light-color);
+}
 
-  <!-- Background video -->
-  <video autoplay muted loop class="bg-video">
-    <source src="video.mp4" type="video/mp4" />
-  </video>
+/* work */
+#work{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('') center/cover no-repeat fixed;
+    color: var(--light-color);
+}
+#work .title h2, #work h3{
+    color: var(--light-color);
+}
+#work .title h2::after{
+    background: var(--light-color);
+}
+.work-bottom{
+    margin-top: 4rem;
+    text-align: center;
+}
+.work-bottom > div .icon img{
+    width: 50px;
+    margin: 0 auto 1.7rem auto;
+}
+/* portfolio */
+.portfolio-grid > div{
+    transition: var(--transition);
+}
+.portfolio-grid > div:hover{
+    transform: scale(0.9);
+}
 
-  <!-- Header -->
-  <header id="header" class="vh-100 flex">
-    <div class="container">
-      <div class="header-content">
-        <h1>I'm a <br><span class="typewrite" data-loop="yes" data-speed="100" data-delay="2000" data-words='["photographer","videographer", "video editor"]'></span></h1>
-        <h3>Kaustav Pal</h3>
-        <ul class="social-links">
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
+/* contact */
+#contact{
+    background-color: rgb(248, 248, 248);
+}
+.contact-content{
+    flex-direction: column;
+    align-items: stretch;
+}
+.contact-left{
+    margin-bottom: 5rem;
+}
+.contact-left .lead{
+    padding: 0.5rem;
+}
+.contact-left form{
+    margin-top: 3rem;
+}
+.contact-left form .form-control{
+    display: block;
+    margin: 1.6rem 0;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    width: 100%;
+}
+.contact-left form .form-control::placeholder{
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+.contact-left .btn-submit{
+    padding: 1.4rem 3rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.6rem;
+    transition: var(--transition);
+}
+.contact-left .btn-submit:hover{
+    background-color: #000;
+}
 
-  <!-- Main -->
-  <main>
-    <!-- About -->
-    <section id="about" class="about py-7">
-      <div class="container">
-        <div class="grid about-content">
-          <div class="about-left">
-            <img src="image/20250329_183041_edited 1.jpg" alt="">
-          </div>
-          <div class="about-right">
-            <div class="title">
-              <h2>About Me</h2>
-            </div>
-            <p class="lead">Professional photographer Kaustav Pal combines his photography degree with his marketing degree to find the right balance between creativity and commercial sense. Kaustav is an experienced all-round photographer and moved to India at the end of 2025.</p>
-            <p class="lead">We can check out his recent works and experiences below. He considers photography as his passion more than profession.</p>
-            <a href="#work" class="btn-down"><i class="fas fa-chevron-down"></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
+#insta{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('') center/cover no-repeat fixed;
+    color: var(--light-color);
+    min-height: 65vh;
+}
+#insta .title h2{
+    color: var(--light-color);
+}
+#insta .title h2::after{
+    background-color: var(--gray-color);
+}
+.insta-grid > div{
+    height: 400px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+.insta-grid > div img{
+    height: 100%;
+    object-fit: cover;
+}
+.insta-grid > div:hover{
+    transform: scale(0.9);
+}
 
-    <!-- Work -->
-    <section id="work" class="py-7">
-      <div class="container">
-        <div class="title">
-          <h2>What Am I Doing?</h2>
-        </div>
-        <ul class="grid">
-          <li class="lead"><i class="fas fa-dot-circle"></i> We work according to the guidelines of the Cinematic Institute of Digital Photography.</li>
-          <li class="lead"><i class="fas fa-dot-circle"></i> Your files will be stored multiple times in two locations.</li>
-          <li class="lead"><i class="fas fa-dot-circle"></i> We follow Dupho terms, registered at the court in Ohio.</li>
-          <li class="lead"><i class="fas fa-dot-circle"></i> We always have backup equipment at hand.</li>
-        </ul>
-        <div class="work-bottom grid">
-          <div><img src="image/20250321_125856.jpg"><h3>Wildlife</h3></div>
-          <div><img src="image/water-lily-8253542.jpg"><h3>Portrait</h3></div>
-          <div><img src="image/20240901_131643.jpg"><h3>Landscape</h3></div>
-          <div><img src="image/IMG_20241009_005050_edited.jpg"><h3>Family</h3></div>
-        </div>
-        <a href="#portfolio" class="btn-down btn-down-white"><i class="fas fa-chevron-down"></i></a>
-      </div>
-    </section>
+/* footer */
+#footer{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+.footer-content{
+    text-align: center;
+}
+.footer-content h3{
+    color: var(--light-color);
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+.footer-content ul{
+    flex-direction: column;
+}
+.footer-content ul li a{
+    color: var(--light-color);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+.footer-content ul li a:hover{
+ 
+}
+.footer-content ul li{
+    margin: .5rem 1rem;
+}
+.footer-content > div:first-child{
+    margin-bottom: 3rem;
+}
+.footer-content > div:first-child div{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin: 5rem auto;
+    border-radius: 50%;
+}
+ .portfolio-grid > div img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    image-rendering: auto;
+}
+        .bg-video {
+  position: fixed;         /* Make video stick to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;       /* Cover the screen without stretching */
+  z-index: -1;             /* Push behind other content */
+  pointer-events: none;    /* Let users interact with page elements */
+}
 
-    <!-- Portfolio -->
-    <section id="portfolio" class="py-7">
-      <div class="container">
-        <div class="title">
-          <h2>My Last Works</h2>
-        </div>
-        <div class="portfolio-grid">
-          <div><img src="image/20220423_124548.jpg"></div>
-          <div><img src="image/20220910_083241.jpg"></div>
-          <div><img src="image/Snapinsta.app_436565339_1180752953268947_694771731966322895_n_1080.jpg"></div>
-          <div><img src="image/20240901_131643.jpg"></div>
-          <div><img src="image/blobio-imr-202110_59612aac8d4d4d5f8f39e1f553875452.jpeg"></div>
-          <div><img src="image/blobio-imr-202110_d910bf78cf6e40b7b69d070bf2498776.jpeg"></div>
-          <div><img src="image/h-tr-n-gbLgWNVTebc-unsplash.jpg"></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Instagram -->
-    <section id="insta" class="py-7">
-      <div class="container">
-        <div class="title">
-          <h2>Instagram</h2>
-        </div>
-        <div class="insta-grid">
-          <div><img src="image/rajat-sarki-hpwWT1aKXGo-unsplash_Edited.jpg"></div>
-          <div><img src="image/water-lily-8253542.jpg"></div>
-          <div><img src="image/1682082758362.jpg"></div>
-          <div><img src="image/1685553220017.jpg"></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-7" style="background: #f8f8f8">
-      <div class="container">
-        <div class="grid contact-content">
-          <div>
-            <div class="title"><h2 style="color:black">Contact With Me</h2></div>
-            <p class="lead"><i class="fas fa-phone-alt"></i> +001 343 (7485)</p>
-            <p class="lead"><i class="fas fa-envelope"></i> contact@gmail.com</p>
-            <form>
-              <input type="text" class="form-control" placeholder="Your name here ..." />
-              <input type="email" class="form-control" placeholder="Your email here" />
-              <textarea class="form-control" placeholder="Your message here"></textarea>
-              <input type="submit" class="btn-submit btn" value="Submit" />
-            </form>
-          </div>
-          <div>
-            <img src="image/20250329_183041_edited 1.jpg" alt="contact image" />
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+/* Media Queries */
 
-  <!-- Footer -->
-  <footer class="footer-content">
-    <h3>KAUSTAV PAL</h3>
-    <img src="image/20250329_183041_edited 1.jpg" />
-    <h3>Links</h3>
-    <ul class="flex" style="flex-wrap: wrap; justify-content: center; list-style: none;">
-      <li><a href="#">About Me</a></li>
-      <li><a href="#">Work</a></li>
-      <li><a href="#">Portfolio</a></li>
-      <li><a href="#">Contact Me</a></li>
-      <li><a href="#">Instagram</a></li>
-    </ul>
-    <p style="font-size: 20px; font-family: Cursive;">This website made by Subhojit Halder</p>
-  </footer>
-
-  <!-- Typewriter JS -->
-  <script>
-    class typeWriting {
-      constructor(element) {
-        this.element = element;
-        this.words = JSON.parse(element.getAttribute("data-words"));
-        this.speed = parseInt(element.getAttribute("data-speed"), 10) || 100;
-        this.delay = parseInt(element.getAttribute("data-delay"), 10) || 1000;
-        this.loop = element.getAttribute("data-loop");
-        this.char = "";
-        this.counter = 0;
-        this.isDeleting = false;
-        this.type();
-      }
-      type() {
-        const index = this.loop === "yes" ? this.counter % this.words.length : this.counter;
-        const fullWord = this.words[index];
-        let typeSpeed = this.speed;
-        if (this.isDeleting) {
-          typeSpeed /= 2;
-          this.char = fullWord.substring(0, this.char.length - 1);
-        } else {
-          this.char = fullWord.substring(0, this.char.length + 1);
-        }
-        this.element.innerHTML = `<span class="write">${this.char}</span><span class="blinking-cursor">|</span>`;
-        if (!this.isDeleting && this.char === fullWord) {
-          if (this.loop === "no" && this.counter >= this.words.length - 1) return;
-          this.isDeleting = true;
-          typeSpeed = this.delay;
-        } else if (this.isDeleting && this.char === "") {
-          this.isDeleting = false;
-          this.counter++;
-        }
-        setTimeout(() => this.type(), typeSpeed);
-      }
+@media(min-width: 450px){
+    .work-bottom{
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 3rem;
+        row-gap: 0;
     }
-    document.addEventListener("DOMContentLoaded", function () {
-      document.querySelectorAll(".typewrite").forEach(e => new typeWriting(e));
-    });
-  </script>
-</body>
-    </html>
+}
+@media(min-width: 576px){
+    .title h2{
+        font-size: 4rem;
+    }
+    .work-bottom{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .portfolio-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .portfolio-grid > div{
+        height: 300px;
+        overflow: hidden;
+    }
+    .portfolio-grid > div img{
+        height: 100%;
+        object-fit: cover;
+    }
+    .contact-left form .form-control{
+        max-width: 500px;
+    }
+    .footer-content ul{
+        flex-direction: row;
+    }
+
+}
+
+@media(min-width: 768px){
+    .header-content h1{
+        font-size: 7rem;
+    }
+    .about-content, .work-top{
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 6rem;
+        row-gap: 0;
+    }
+    .about-left{
+        margin-bottom: 0;
+    }
+    .contact-content{
+        flex-direction: row;
+    }
+    .contact-right{
+        padding-left: 3rem;
+        width: 50%;
+    }
+    .contact-left{
+        width: 50%;
+    }
+    .insta-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+@media(min-width: 992px){
+    .insta-grid{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .insta-grid > div{
+        height: 250px;
+    }
+}
+
+@media(min-width: 1200px){
+    .portfolio-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .portfolio-grid > div:nth-child(2){
+        grid-column: 2 / 4;
+    }
+    .portfolio-grid > div:nth-child(6){
+        grid-column: 1 / 3;
+    }
+}
+
+  
+      </style>

@@ -770,6 +770,32 @@ window.addEventListener("load", () => {
   },4000); // Adjust duration as needed
 });
 </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("#contact form");
+    const emailInput = form.querySelector("input[name='email']");
+
+    form.addEventListener("submit", function (e) {
+      const email = emailInput.value.trim().toLowerCase();
+
+      // 1. Must be a Gmail address
+      const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+      if (!gmailPattern.test(email)) {
+        alert("Please enter a valid Gmail address.");
+        e.preventDefault();
+        return;
+      }
+
+      // 2. Block common fake words
+      const fakeWords = ["test", "example", "demo", "fake", "abc", "123"];
+      if (fakeWords.some(word => email.includes(word))) {
+        alert("Please use a real Gmail address, not a test or fake one.");
+        e.preventDefault();
+        return;
+      }
+    });
+  });
+        </script>
 
 </body>
 </html>

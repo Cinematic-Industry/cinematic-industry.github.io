@@ -633,9 +633,9 @@ h1, h2, h3{
                         <form action="https://api.web3forms.com/submit" method="POST">
                             <input type="hidden" name="access_key" value="29f7aea2-ddf8-43bc-a99c-c4ca8460aa54">
                             <input type = "text" name="name" class = "form-control" placeholder="Your name here ..." required>
-                            <input type = "email" name="email" class = "form-control" placeholder="Your email here" required>
-                            <textarea name="message" class="form-control" placeholder="Your message here" required></textarea>
-                            <div class="animate-up"><input type = "submit" class = "btn-submit btn" value = "Submit"></div>
+                            <input type="email" id="email" placeholder="Enter your email" required><br><br>
+                            <button onclick="sendOTP()">Send OTP</button><br><br>
+                            
                         </form>
                     </div>
 

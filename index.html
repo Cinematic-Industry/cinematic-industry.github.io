@@ -801,31 +801,37 @@ window.addEventListener("load", () => {
 });
 </script>
     <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("#contact form");
-    const emailInput = form.querySelector("input[name='email']");
+  emailjs.init("oD8fjMzv-N542EhZB"); // Your Public Key
+  let generatedOTP = "";
 
-    form.addEventListener("submit", function (e) {
-      const email = emailInput.value.trim().toLowerCase();
+  function sendOTP() {
+    const email = document.getElementById("email").value;
+    generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
-      // 1. Must be a Gmail address
-      const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-      if (!gmailPattern.test(email)) {
-        alert("Please enter a valid Gmail address.");
-        e.preventDefault();
-        return;
-      }
+    const params = {
+      to_email: email,
+      otp: generatedOTP
+    };
 
-      // 2. Block common fake words
-      const fakeWords = ["test", "example", "demo", "fake", "abc", "123"];
-      if (fakeWords.some(word => email.includes(word))) {
-        alert("Please use a real Gmail address, not a test or fake one.");
-        e.preventDefault();
-        return;
-      }
-    });
-  });
-        </script>
+    emailjs.send("service_7lj3m5h", "template_7q5hsl9", params)
+      .then(() => {
+        alert("✅ OTP sent!");
+        document.getElementById("userOtp").style.display = "inline";
+        document.getElementById("verifyBtn").style.display = "inline";
+      }, (error) => {
+        alert("❌ Failed to send OTP: " + JSON.stringify(error));
+      });
+  }
+
+  function verifyOTP() {
+    const userOtp = document.getElementById("userOtp").value;
+    if (userOtp === generatedOTP) {
+      document.getElementById("textareaBox").classList.add("show");
+    } else {
+      alert("❌ Invalid OTP. Try again.");
+    }
+  }
+    </script>
 
 </body>
 </html>

@@ -336,6 +336,23 @@ h1, h2, h3{
   font-size: 18px;
   margin-bottom: 8px;
 }
+      #textareaBox {
+  position: fixed;
+  bottom: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: bottom 0.4s ease-in-out;
+}
+
+#textareaBox.show {
+  bottom: 60px;
+}
 
 #contact button {
   font-weight: bold;
@@ -845,17 +862,11 @@ window.addEventListener("load", () => {
   }, 4000); // delay in ms before showing content
 });
 </script>
-    <script>
-        function verifyOTP() {
-  const userOtp = document.getElementById("userOtp").value;
-  if (userOtp === generatedOTP) {
-    document.getElementById("commentBox").classList.add("show");
-  } else {
-    alert("❌ Invalid OTP. Please try again.");
-  }
-        }
-        
-  emailjs.init("oD8fjMzv-N542EhZB"); // Your Public Key
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("oD8fjMzv-N542EhZB"); // ✅ Your public key
+
   let generatedOTP = "";
 
   function sendOTP() {
@@ -885,7 +896,8 @@ window.addEventListener("load", () => {
       alert("❌ Invalid OTP. Try again.");
     }
   }
-    </script>
+</script>
+
 
 </body>
 </html>

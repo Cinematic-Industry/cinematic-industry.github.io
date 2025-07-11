@@ -831,6 +831,15 @@ window.addEventListener("load", () => {
 });
 </script>
     <script>
+        function verifyOTP() {
+  const userOtp = document.getElementById("userOtp").value;
+  if (userOtp === generatedOTP) {
+    document.getElementById("commentBox").classList.add("show");
+  } else {
+    alert("❌ Invalid OTP. Please try again.");
+  }
+        }
+        
   emailjs.init("oD8fjMzv-N542EhZB"); // Your Public Key
   let generatedOTP = "";
 

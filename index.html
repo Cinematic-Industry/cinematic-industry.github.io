@@ -635,6 +635,8 @@ h1, h2, h3{
                             <input type = "text" name="name" class = "form-control" placeholder="Your name here ..." required>
                             <input type="email" id="email" placeholder="Enter your email" required><br><br>
                             <button onclick="sendOTP()">Send OTP</button><br><br>
+                            <input type="text" id="userOtp" placeholder="Enter OTP" style="display:none;"><br><br>
+                            <button onclick="verifyOTP()" id="verifyBtn" style="display:none;">Verify OTP</button>
                             
                         </form>
                     </div>

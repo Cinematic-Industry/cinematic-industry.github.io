@@ -304,6 +304,21 @@ h1, h2, h3{
 .contact-left .btn-submit:hover{
     background-color: #000;
 }
+      .comment-box {
+  position: fixed;
+  bottom: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: bottom 0.5s ease-in-out;
+}
+
+.comment-box.show {
+  bottom: 50px;
+}
       #contact input,
 #contact textarea,
 #contact button {
